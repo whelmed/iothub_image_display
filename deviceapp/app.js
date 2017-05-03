@@ -50,7 +50,7 @@ function connect(err) {
             download(messageObj.imageUrl, function() {
                 // Kill any image viewers
                 var file = `/tmp/${getFileName(messageObj.imageUrl)}`;
-                exec(`pkill fbi -2 && fbi -T 2 ${file}`, (error, stdout, stderr) => {
+                exec(`sudo pkill fbi -2 && sudo fbi -T 2 ${file} -a`, (error, stdout, stderr) => {
                     if (error) {
                         console.error(`exec error: ${error}`);
                         return;
