@@ -66,7 +66,7 @@ function connect(err) {
 
 function getFileName(uri) {
     var urlSections = uri.split('/');
-    return urlSections[urlSections-1];
+    return urlSections[urlSections.length -1];
 }
 
 function download(uri, callback) {
