@@ -49,7 +49,7 @@ function connect(err) {
 
             download(messageObj.imageUrl, function() {
                 // Kill any image viewers
-                var file = '/tmp/' + getFileName(uri);
+                var file = `/tmp/${getFileName(messageObj.imageUrl)}`;
                 exec(`pkill fbi -2 && fbi -T 2 ${file}`, (error, stdout, stderr) => {
                     if (error) {
                         console.error(`exec error: ${error}`);
@@ -74,7 +74,7 @@ function download(uri, callback) {
   
   request.head(uri, function(err, res, body) {
       
-    var r = request(uri).pipe(fs.createWriteStream('/tmp/' + getFileName(uri)));
+    var r = request(uri).pipe(fs.createWriteStream(`/tmp/${getFileName(uri)}`));
     r.on('close', callback);
   });
 }
