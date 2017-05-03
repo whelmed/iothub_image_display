@@ -45,7 +45,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
                 serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
 
                 var message = new MessageObj {
-                    imageUrl = $"https://storagesample.blob.core.windows.net/{containerName}"
+                    imageUrl = $"https://caiothubsolution.blob.core.windows.net/{containerName}"
                 };
 
                 var commandMessage = new Message(System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(message)));

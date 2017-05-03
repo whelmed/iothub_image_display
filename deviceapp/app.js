@@ -40,15 +40,9 @@ function connect(err) {
     });   
 
     // Listen for IoT Hub sending messages
-    client.getFeedbackReceiver(function(err, receiver) {
-        if (err) {
-            console.error('Could not get message: ' + err.message);
-            return;
-        } 
-        receiver.on('message', function (msg) {
-            console.log('Feedback message:')
-            console.log(msg.getData().toString('utf-8'));
-        });
+    client.on('message', function(message) {
+        console.log('Feedback message:')
+        console.log(msg.getData().toString('utf-8'));
     });
 }
 main();
