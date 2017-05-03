@@ -44,8 +44,9 @@ function connect(err) {
     // Listen for IoT Hub sending messages
     client.on('message', function(msg) {
         if (os.platform() === 'linux') {
-            console.log(msg.data);
-            download(msg.data.imageUrl, function() {
+            var messageObj = JSON.parse(msg.data.toString());
+
+            download(messageObj.imageUrl, function() {
                 // Kill any image viewers
                 var file = '/tmp/' + getFileName(uri);
                 exec(`pkill fbi -2 && fbi -T 2 ${file}`, (error, stdout, stderr) => {
