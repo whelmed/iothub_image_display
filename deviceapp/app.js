@@ -50,7 +50,9 @@ function connect(err) {
             download(messageObj.imageUrl, function() {
                 // Kill any image viewers
                 var file = `/tmp/${getFileName(messageObj.imageUrl)}`;
-                exec(`sudo pkill fbi -2 && sudo fbi -T 2 ${file} -a`, (error, stdout, stderr) => {
+                // This will eventually be a problem...
+                // It keeps starting up new process without any cleanup
+                exec(`sudo fbi -T 2 ${file} -a`, (error, stdout, stderr) => {
                     if (error) {
                         console.error(`exec error: ${error}`);
                         return;
