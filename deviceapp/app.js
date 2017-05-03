@@ -76,7 +76,6 @@ function download(uri, callback) {
       
     var r = request(uri).pipe(fs.createWriteStream('/tmp/' + getFileName(uri)));
     r.on('close', callback);
-    r.on('error', error);
   });
 }
 
