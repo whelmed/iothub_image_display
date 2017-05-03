@@ -5,7 +5,8 @@ var Protocol    = require('azure-iot-device-mqtt').Mqtt,
     Message     = require('azure-iot-device').Message,
     creds       = require('./creds.js'),
     os          = require('os'),
-    client      = null;
+    client      = null,
+    request     = require('request');
 
 const exec = require('child_process').exec;    
 
