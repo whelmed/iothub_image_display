@@ -40,7 +40,7 @@ function connect(err) {
     });   
 
     // Listen for IoT Hub sending messages
-    client.on('message', function(message) {
+    client.on('message', function(msg) {
         console.log('Feedback message:')
         console.log(msg.getData().toString('utf-8'));
     });
